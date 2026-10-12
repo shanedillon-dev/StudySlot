@@ -20,12 +20,12 @@ There are no accounts, timetables are never stored on the server, and it works o
 
 ## Tech stack
 
-| Area     | What I used                                                                    |
-| -------- | ------------------------------------------------------------------------------ |
-| Frontend | Plain HTML, CSS and JavaScript (no framework), installable PWA, service worker |
-| Backend  | Cloudflare Workers (serverless), Cloudflare KV, built-in rate limiting         |
-| Security | AES-256-GCM encrypted share links, HKDF, HMAC, strict Content-Security-Policy  |
-| Testing  | Vitest (185 tests), happy-dom smoke tests, ESLint, Prettier                    |
+| Area     | What I used                                                                     |
+| -------- | ------------------------------------------------------------------------------- |
+| Frontend | Plain HTML, CSS and JavaScript (no framework), installable PWA, service worker  |
+| Backend  | Cloudflare Workers (serverless), Cloudflare KV, built-in rate limiting          |
+| Security | AES-256-GCM encrypted share links, HKDF, HMAC, strict Content-Security-Policy   |
+| Testing  | Vitest (185 tests), happy-dom smoke tests, ESLint, Prettier                     |
 | CI/CD    | GitHub Actions: tests on every push, automatic deploy to Cloudflare from `main` |
 
 Built with AI-assisted development (Claude Code). Every change has to pass the full test suite in CI before it deploys.
