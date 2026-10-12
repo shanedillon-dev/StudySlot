@@ -1,34 +1,50 @@
 # Studyslot
 
-[![CI](https://github.com/ShaneD288/StudySlot/actions/workflows/ci.yml/badge.svg)](https://github.com/ShaneD288/StudySlot/actions/workflows/ci.yml)
+[![CI](https://github.com/shanedillon-dev/StudySlot/actions/workflows/ci.yml/badge.svg)](https://github.com/shanedillon-dev/StudySlot/actions/workflows/ci.yml)
 
-Your college timetable, cleaned up: paste your calendar link, see what's on, where and when.
+**Your TU Dublin timetable, cleaned up.** Paste your calendar link and see what's on, where and when, plus when your friends are free.
 
 **Live:** [studyslot.ie](https://studyslot.ie) (beta)
 
+## Why I built it
+
+TU Dublin timetables are hard to read. Every class comes with module codes, group labels and room capacities, and you see every lab group's slot, not just your own. Working out when you and your friends are all free means comparing timetables by hand.
+
+Studyslot fixes that. You paste the calendar link TU Dublin already gives you, and you get:
+
+- a clean **today** and **week** view showing only your own lab groups
+- **free time shared with friends**, even across different courses
+- a cleaned feed for **Apple or Google Calendar**
+
+There are no accounts, timetables are never stored on the server, and it works offline once loaded.
+
+## Tech stack
+
+| Area     | What I used                                                                    |
+| -------- | ------------------------------------------------------------------------------ |
+| Frontend | Plain HTML, CSS and JavaScript (no framework), installable PWA, service worker |
+| Backend  | Cloudflare Workers (serverless), Cloudflare KV, built-in rate limiting         |
+| Security | AES-256-GCM encrypted share links, HKDF, HMAC, strict Content-Security-Policy  |
+| Testing  | Vitest (185 tests), happy-dom smoke tests, ESLint, Prettier                    |
+| CI/CD    | GitHub Actions: tests on every push, automatic deploy to Cloudflare from `main` |
+
+Built with AI-assisted development (Claude Code). Every change has to pass the full test suite in CI before it deploys.
+
 <!--
-  DRAFT NOTES: Shane to rewrite this intro in his own words. Points to cover:
--->
-
-- Free web app (PWA) for Irish college students, starting with TU Dublin
-- Problem: college timetables are cluttered with module codes, group labels, room capacities and every lab group's slot
-- Students paste the calendar link their college already gives them (`.ics` / `webcal://`)
-- Studyslot shows a clean today/week view, only their own lab groups, and free time shared with friends
-- No accounts, timetables never stored on the server, works offline once loaded
-
 ## Screenshots
 
-<!--
-  TODO(Shane): add 2-3 phone screenshots or a short GIF (Today, Week, Friends), e.g.
-  docs/screenshots/today.png, and reference them here:
-  <img src="docs/screenshots/today.png" width="260" alt="Today view">
--->
+TODO: add 2-3 phone screenshots (Today, Week, Friends) to docs/screenshots/, then uncomment this section.
 
-_Screenshots coming soon._
+<p>
+  <img src="docs/screenshots/today.png" width="240" alt="Today view">
+  <img src="docs/screenshots/week.png" width="240" alt="Week view">
+  <img src="docs/screenshots/friends.png" width="240" alt="Friends view">
+</p>
+-->
 
 ## Features
 
-- **Works with any college** that offers a calendar link (iCal / webcal), including TU Dublin's Scientia timetables, Google Calendar and Outlook.
+- **Built for TU Dublin's Scientia timetables.** It also reads any iCal / webcal calendar link, including Google Calendar and Outlook.
 - **Today view:** "Now" (highlighted, with time left) or "Next", then the day's classes with free gaps between them.
 - **Week view:** day strip with class counts. Weekends appear only when there are classes.
 - **Week numbers:** "Week 4 of 12". Terms are detected from when classes run, and reading weeks show as "no classes".
@@ -88,10 +104,6 @@ flowchart LR
 | `test/`                      | Vitest tests and a synthetic timetable fixture                                           |
 
 ## Design decisions
-
-<!--
-  DRAFT NOTES: Shane to rewrite this section in his own words.
--->
 
 **Why no accounts**
 
